@@ -2,8 +2,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
 pkgname=ffmpegthumbs
-pkgver=15.08_r91_c06602f
-pkgrel=3
+pkgver=15.12.0
+pkgrel=1
 pkgdesc='FFmpeg-based thumbnail creator for video files'
 url='https://projects.kde.org/ffmpegthumbs'
 arch=(i686 x86_64)
@@ -11,13 +11,9 @@ license=(GPL LGPL FDL)
 #groups=(kde-applications kdemultimedia)
 depends=(kio ffmpeg)
 makedepends=(extra-cmake-modules git)
-source=("git://git.kde.org/ffmpegthumbs#commit=c06602ff")
-sha1sums=('SKIP')
-
-pkgver() { 
-  cd $pkgname
-  printf "15.08_r%s_%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+replaces=(kdemultimedia-ffmpegthumbs)
+source=("http://download.kde.org/stable/applications/$pkgver/src/$pkgname-$pkgver.tar.xz")
+md5sums=('2e0f2da2d7e0ca9209968aff279267fb')
 
 prepare() {
   mkdir -p build
@@ -25,7 +21,7 @@ prepare() {
 
 build() {
   cd build
-  cmake ../$pkgname \
+  cmake ../$pkgname-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_TESTING=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr \
