@@ -1,0 +1,13 @@
+diff --git a/ffmpegthumbnailer.cpp b/ffmpegthumbnailer.cpp
+index 8db7629..85d3b4e 100644
+--- a/ffmpegthumbnailer.cpp
++++ b/ffmpegthumbnailer.cpp
+@@ -169,7 +169,7 @@ KIO::ThumbnailResult FFMpegThumbnailer::create(const KIO::ThumbnailRequest &requ
+     seqIdx %= seekPercentages.size();
+ 
+     m_Thumbnailer.setThumbnailSize(request.targetSize().width());
+-    m_Thumbnailer.setSeekPercentage(seekPercentages[seqIdx]);
++    m_Thumbnailer.setSeekTime(QLatin1String("00:00:00"));
+     //Smart frame selection is very slow compared to the fixed detection
+     //TODO: Use smart detection if the image is single colored.
+     //m_Thumbnailer.setSmartFrameSelection(true);
