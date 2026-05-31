@@ -10,11 +10,11 @@ arch=(x86_64)
 license=(GPL-2.0-or-later
          LGPL-2.0-or-later)
 depends=(ffmpeg
-         gcc-libs
          glibc
          kconfig
          kcoreaddons
          kio
+         libstdc++
          qt6-base)
 makedepends=(extra-cmake-modules)
 groups=(kde-applications
